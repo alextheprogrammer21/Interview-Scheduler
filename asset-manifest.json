@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/Interview-Scheduler/static/css/main.5484b534.chunk.css",
+    "main.js": "/Interview-Scheduler/static/js/main.5d5e3e45.chunk.js",
+    "main.js.map": "/Interview-Scheduler/static/js/main.5d5e3e45.chunk.js.map",
+    "runtime~main.js": "/Interview-Scheduler/static/js/runtime~main.1cf9a4e9.js",
+    "runtime~main.js.map": "/Interview-Scheduler/static/js/runtime~main.1cf9a4e9.js.map",
+    "static/css/2.c6907a0b.chunk.css": "/Interview-Scheduler/static/css/2.c6907a0b.chunk.css",
+    "static/js/2.948464aa.chunk.js": "/Interview-Scheduler/static/js/2.948464aa.chunk.js",
+    "static/js/2.948464aa.chunk.js.map": "/Interview-Scheduler/static/js/2.948464aa.chunk.js.map",
+    "index.html": "/Interview-Scheduler/index.html",
+    "precache-manifest.98351f6a808e175b0a2a2c79b3c48148.js": "/Interview-Scheduler/precache-manifest.98351f6a808e175b0a2a2c79b3c48148.js",
+    "service-worker.js": "/Interview-Scheduler/service-worker.js",
+    "static/css/2.c6907a0b.chunk.css.map": "/Interview-Scheduler/static/css/2.c6907a0b.chunk.css.map",
+    "static/css/main.5484b534.chunk.css.map": "/Interview-Scheduler/static/css/main.5484b534.chunk.css.map"
+  }
+}
