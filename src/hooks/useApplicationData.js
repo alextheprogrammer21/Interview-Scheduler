@@ -46,10 +46,9 @@ export default function useApplicationData() {
     };
 
     return axios.put(`/api/appointments/${id}`, appointment).then(() => {
-      state.days[calenderDay].spots -= 1;
-      setState({
-        ...state,
-        appointments
+      setState(state => ({ ...state, appointments }));
+      Promise.all([axios.get("/api/days")]).then(([days]) => {
+        setState(state => ({ ...state, days: days.data }));
       });
     });
   }

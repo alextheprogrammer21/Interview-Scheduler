@@ -35,21 +35,15 @@ export default function Appointment(props) {
       student: name,
       interviewer
     };
-    if (typeof interviewer == "number") {
-      transition(SAVING);
-      props
-        .bookInterview(id, interview)
-        .then(() => {
-          transition(SHOW);
-        })
-        .catch(() => {
-          transition(ERROR_SAVE, true);
-        });
-    } else {
-      {
+    transition(SAVING);
+    props
+      .bookInterview(id, interview)
+      .then(() => {
+        transition(SHOW);
+      })
+      .catch(() => {
         transition(ERROR_SAVE, true);
-      }
-    }
+      });
   }
 
   function deleter() {
@@ -89,7 +83,8 @@ export default function Appointment(props) {
       {mode === SHOW && (
         <Show
           student={props.interview.student}
-          interviewers={interviewer}
+          interviewers={props.interviewers}
+          interviewer={interviewer}
           onDelete={() => {
             transition(CONFIRM);
           }}
