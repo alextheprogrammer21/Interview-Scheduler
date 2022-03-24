@@ -53,14 +53,48 @@ export default function useApplicationData() {
     });
   }
 
-  function cancelInterview(id) {
+  const getSpotsForDay = state => {
+    const dayFound = { ...state.days.find(obj => obj.name === state.day) };
+    let spots = 0;
+    for (const appointmentId of dayFound.appointments) {
+      if (state.appointments[appointmentId].interview === null) {
+        spots++;
+      }
+    }
+    const dayIndex = dayFound.id - 1;
+    return { spots, dayIndex };
+  };
+
+  const cancelInterview = id => {
     const appointment = {
       ...state.appointments[id],
       interview: null
     };
-    return axios.delete(`/api/appointments/${id}`, appointment).then(() => {
-      state.days[calenderDay].spots += 1;
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+
+    const newStateTemp = { ...state, appointments };
+    const { spots, dayIndex } = getSpotsForDay(newStateTemp);
+
+    const daySpotsUpdate = { ...state.days[dayIndex], spots };
+
+    const updatedDays = [...state.days];
+    updatedDays[dayIndex] = daySpotsUpdate;
+
+    return new Promise((resolve, reject) => {
+      axios
+        .delete(`/api/appointments/${id}`)
+        .then(function(res) {
+          setState({ ...state, appointments, days: updatedDays });
+          resolve();
+        })
+        .catch(function(error) {
+          console.log(error);
+          reject();
+        });
     });
-  }
+  };
   return { state, setDay, bookInterview, cancelInterview };
 }
